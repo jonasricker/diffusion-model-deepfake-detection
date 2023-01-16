@@ -34,7 +34,7 @@ $ python recreate_train_data.py path/to/bedroom_train_lmbd path/to/diffusion_mod
 ```
 The script will distribute real images such that for each generator there is a unique set of 40k real images (39k train, 1k validation) with the correct dimensions. Note that due to the large amount of images this will take some time. For each generator, real images will be in `0_real`, fake images in `1_fake`.
 
-To validate that all images were downloaded and processed correctly, you can run the following commands and compare the hash values (computation takes some time).
+The script performs a simple form of validation. You can additionally run the following commands and compare the hash values (computation takes some time).
 ```
 $ find diffusion_model_deepfakes_lsun_bedroom/train/ -type f -print0 | sort -z | xargs -0 sha1sum | cut -d " " -f 1 | sha1sum
 10fd255e5669e76b4e9bde93f672733a5dfa92fa  -

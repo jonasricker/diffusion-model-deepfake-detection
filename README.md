@@ -16,7 +16,7 @@ We provide the source code and instructions on how to recreate the results in th
 
 The commands below expect a working directory which contains data, models, and to which results will be written. To run the commandas as-is, save the path to this directory in a variable by executing `WORKDIR=path/to/working/directory`.
 
-Instructions for downloading the[Checkpoints](#checkpoints) and [Dataset](#dataset) are given in the corresponding sections. Your working directory should have the following structure:
+Instructions for downloading the [Checkpoints](#checkpoints) and [Dataset](#dataset) are given in the corresponding sections. Your working directory should have the following structure:
 ```bash
 workdir/
 ├── data
@@ -91,8 +91,8 @@ python evaluate_detectors.py $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroo
 ## Feature Space Analysis
 To extract the features from Gragnaniello2021 run
 ```bash
-   python detectors/gragnaniello2021/features.py --weights-path $WORKDIR/models/gragnaniello2021/gandetection_resnet50nodown_progan.pth --img-root $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroom/test --output-root $WORKDIR/output
-   python detectors/gragnaniello2021/features.py --weights-path $WORKDIR/models/gragnaniello2021/gandetection_resnet50nodown_stylegan2.pth --img-root $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroom/test --output-root $WORKDIR/output
+python detectors/gragnaniello2021/features.py --weights-path $WORKDIR/models/gragnaniello2021/gandetection_resnet50nodown_progan.pth --img-root $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroom/test --output-root $WORKDIR/output
+python detectors/gragnaniello2021/features.py --weights-path $WORKDIR/models/gragnaniello2021/gandetection_resnet50nodown_stylegan2.pth --img-root $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroom/test --output-root $WORKDIR/output
 ```
 
 To extract the features from Wang2020 using a modified version of the original script run

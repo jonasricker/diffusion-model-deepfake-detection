@@ -64,14 +64,12 @@ python evaluate_detectors.py $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroo
 To recreate Figures 1a and 1b run
 ```bash
 python evaluate_detectors.py $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroom/test $WORKDIR/models $WORKDIR/output --img-dirs Real ProGAN StyleGAN ProjectedGAN Diff-StyleGAN2 Diff-ProjectedGAN DDPM IDDPM ADM PNDM LDM --experiment finetuning --predictors wang2020 --wang2020-model-path wang2020/finetuning/ProGAN wang2020/finetuning/StyleGAN wang2020/finetuning/ProjectedGAN wang2020/finetuning/Diff-StyleGAN2 wang2020/finetuning/Diff-ProjectedGAN wang2020/finetuning/DDPM wang2020/finetuning/IDDPM wang2020/finetuning/ADM wang2020/finetuning/PNDM wang2020/finetuning/LDM wang2020/finetuning/GAN wang2020/finetuning/DM wang2020/finetuning/All --output cfm --metric AUROC
-
 python evaluate_detectors.py $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroom/test $WORKDIR/models $WORKDIR/output --img-dirs Real ProGAN StyleGAN ProjectedGAN Diff-StyleGAN2 Diff-ProjectedGAN DDPM IDDPM ADM PNDM LDM --experiment finetuning --predictors wang2020 --wang2020-model-path wang2020/finetuning/ProGAN wang2020/finetuning/StyleGAN wang2020/finetuning/ProjectedGAN wang2020/finetuning/Diff-StyleGAN2 wang2020/finetuning/Diff-ProjectedGAN wang2020/finetuning/DDPM wang2020/finetuning/IDDPM wang2020/finetuning/ADM wang2020/finetuning/PNDM wang2020/finetuning/LDM wang2020/finetuning/GAN wang2020/finetuning/DM wang2020/finetuning/All --output cfm --metric PD@1%
 ```
 
 To recreate Figures 8a and 8b run
 ```bash
 python evaluate_detectors.py $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroom/test $WORKDIR/models $WORKDIR/output --img-dirs Real ProGAN StyleGAN ProjectedGAN Diff-StyleGAN2 Diff-ProjectedGAN DDPM IDDPM ADM PNDM LDM --experiment scratch --predictors wang2020 --wang2020-model-path wang2020/scratch/ProGAN wang2020/scratch/StyleGAN wang2020/scratch/ProjectedGAN wang2020/scratch/Diff-StyleGAN2 wang2020/scratch/Diff-ProjectedGAN wang2020/scratch/DDPM wang2020/scratch/IDDPM wang2020/scratch/ADM wang2020/scratch/PNDM wang2020/scratch/LDM wang2020/scratch/GAN wang2020/scratch/DM wang2020/scratch/All --output cfm --metric AUROC
-
 python evaluate_detectors.py $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroom/test $WORKDIR/models $WORKDIR/output --img-dirs Real ProGAN StyleGAN ProjectedGAN Diff-StyleGAN2 Diff-ProjectedGAN DDPM IDDPM ADM PNDM LDM --experiment scratch --predictors wang2020 --wang2020-model-path wang2020/scratch/ProGAN wang2020/scratch/StyleGAN wang2020/scratch/ProjectedGAN wang2020/scratch/Diff-StyleGAN2 wang2020/scratch/Diff-ProjectedGAN wang2020/scratch/DDPM wang2020/scratch/IDDPM wang2020/scratch/ADM wang2020/scratch/PNDM wang2020/scratch/LDM wang2020/scratch/GAN wang2020/scratch/DM wang2020/scratch/All --output cfm --metric PD@1%
 ```
 
@@ -146,7 +144,6 @@ python spectrum_evolutions.py $WORKDIR/data/diffusion_model_deepfakes_lsun_bedro
 To generate samples at different steps of the denoising process run
 ```bash
 python sample_adm_denoising_process.py --model $WORKDIR/models/dhariwal2021/lsun_bedroom.pt --output_dir $WORKDIR/output/spectrum_vs_steps --store_within True --stop 1000 --step 10 --timestep_respacing 1000 --attention_resolutions 32,16,8 --class_cond False --diffusion_steps 1000 --dropout 0.1 --image_size 256 --learn_sigma True --noise_schedule linear --num_channels 256 --num_head_channels 64 --num_res_blocks 2 --resblock_updown True --use_fp16 True --use_scale_shift_norm True
-
 python sample_adm_denoising_process.py --model $WORKDIR/models/dhariwal2021/lsun_bedroom.pt --output_dir $WORKDIR/output/spectrum_vs_steps --store_within True --stop 100 --step 1 --timestep_respacing 1000 --attention_resolutions 32,16,8 --class_cond False --diffusion_steps 1000 --dropout 0.1 --image_size 256 --learn_sigma True --noise_schedule linear --num_channels 256 --num_head_channels 64 --num_res_blocks 2 --resblock_updown True --use_fp16 True --use_scale_shift_norm True
 ```
 
@@ -154,6 +151,18 @@ To recreate Figures 5a and 5b run
 ```bash
 python spectrum_evolutions.py $WORKDIR/output/spectrum_vs_steps/denoising-1000_10 $WORKDIR/output --fraction 0.49 spectrum_vs_steps $WORKDIR/output/spectrum_vs_steps/lsun_bedroom_ref-10000_samples.npy
 python spectrum_evolutions.py $WORKDIR/output/spectrum_vs_steps/denoising-100_1 $WORKDIR/output --fraction 0.49 spectrum_vs_steps $WORKDIR/output/spectrum_vs_steps/lsun_bedroom_ref-10000_samples.npy
+```
+
+To plot the spectrum deviation relative to the diffusion process instead of the real spectrum, we first need to generate samples at different steps of the diffusion process by running
+```bash
+python sample_adm_diffusion_process.py --data_dir $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroom/test/Real --output_dir $WORKDIR/output/spectrum_vs_steps --stop 1000 --step 10 --timestep_respacing 1000 --attention_resolutions 32,16,8 --class_cond False --diffusion_steps 1000 --dropout 0.1 --image_size 256 --learn_sigma True --noise_schedule linear --num_channels 256 --num_head_channels 64 --num_res_blocks 2 --resblock_updown True --use_fp16 True --use_scale_shift_norm True
+python sample_adm_diffusion_process.py --data_dir $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroom/test/Real --output_dir $WORKDIR/output/spectrum_vs_steps --stop 100 --step 1 --timestep_respacing 1000 --attention_resolutions 32,16,8 --class_cond False --diffusion_steps 1000 --dropout 0.1 --image_size 256 --learn_sigma True --noise_schedule linear --num_channels 256 --num_head_channels 64 --num_res_blocks 2 --resblock_updown True --use_fp16 True --use_scale_shift_norm True
+```
+
+Then, to recreate Figures 15a and 15b run
+```bash
+python spectrum_evolutions.py $WORKDIR/output/spectrum_vs_steps/denoising-1000_10 $WORKDIR/output --fraction 0.49 denoising_vs_diffusion $WORKDIR/output/spectrum_vs_steps/diffusion-1000_10
+python spectrum_evolutions.py $WORKDIR/output/spectrum_vs_steps/denoising-100_1 $WORKDIR/output --fraction 0.49 denoising_vs_diffusion $WORKDIR/output/spectrum_vs_steps/diffusion-100_1
 ```
 
 To recreate Figure 16 run
@@ -164,7 +173,6 @@ python spectrum_evolutions.py $WORKDIR/output/spectrum_vs_steps/denoising-100_1 
 To sample images using different numbers of sampling steps (without and with DDIM) run
 ```bash
 for step in 2 4 8 16 25 50 100 200 500 1000; do python sample_adm_denoising_process.py --model $WORKDIR/models/dhariwal2021/lsun_bedroom.pt --output_dir $WORKDIR/output/spectrum_vs_steps --timestep_respacing $step --attention_resolutions 32,16,8 --class_cond False --diffusion_steps 1000 --dropout 0.1 --image_size 256 --learn_sigma True --noise_schedule linear --num_channels 256 --num_head_channels 64 --num_res_blocks 2 --resblock_updown True --use_fp16 True --use_scale_shift_norm True; done
-
 for step in 2 4 8 16 25 50 100 200 500 1000; do python sample_adm_denoising_process.py --model $WORKDIR/models/dhariwal2021/lsun_bedroom.pt --output_dir $WORKDIR/output/spectrum_vs_steps --use_ddim True --timestep_respacing $step --attention_resolutions 32,16,8 --class_cond False --diffusion_steps 1000 --dropout 0.1 --image_size 256 --learn_sigma True --noise_schedule linear --num_channels 256 --num_head_channels 64 --num_res_blocks 2 --resblock_updown True --use_fp16 True --use_scale_shift_norm True; done
 ```
 
@@ -184,7 +192,6 @@ python spectrum_evolutions.py $WORKDIR/output/spectrum_vs_steps/sampling_steps_d
 To recreate Figures 11 and 12 run
 ```bash
 python fakeness.py $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroom/test $WORKDIR/output/evaluate/cache $WORKDIR/output --img-dirs ADM DDPM Diff-ProjectedGAN Diff-StyleGAN2 IDDPM LDM PNDM ProGAN ProjectedGAN StyleGAN
-
 python fakeness.py $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroom/test $WORKDIR/output/evaluate/cache $WORKDIR/output --img-dirs ADM DDPM IDDPM LDM PNDM --detector wang2020_finetuning_DM
 ```
 Note that this script uses the cache generated by `evaluate_detectors.py`, which is why it needs to be called first.

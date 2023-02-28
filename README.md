@@ -138,7 +138,7 @@ Note that to run this evaluation it is required to also have the `train` and `va
 ## Spectrum Evolutions
 Since we analyze the spectrum evolution using ADM, it is necessary to clone the [repository](https://github.com/openai/guided-diffusion) and install the package by calling `pip install .` from within. Also, download the LSUN Bedroom checkpoint and save it to `$WORKDIR/models/dhariwal2021/lsun_bedroom.pt`.
 
-First, compute the reference spectrum from 50k real images by running
+First, compute the reference spectrum from 10k real images by running
 ```bash
 python spectrum_evolutions.py $WORKDIR/data/diffusion_model_deepfakes_lsun_bedroom/test/Real $WORKDIR/output compute_reference lsun_bedroom_ref
 ```

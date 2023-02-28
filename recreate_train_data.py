@@ -1,3 +1,4 @@
+"""Add real LSUN images to the downloadable dataset."""
 import argparse
 from io import BytesIO
 from pathlib import Path
@@ -53,7 +54,7 @@ def main(lmdb_path: Path, img_path: Path, validation_only: bool):
                         out = plan[i][0]
                         print(f"Exporting {plan[i][1]} images to {out}.")
                         out.mkdir()
-                
+
                 # load image and center crop t0 256x256 pixels
                 img = Image.open(BytesIO(val))
                 w, h = img.size

@@ -1,0 +1,14 @@
+albumentations
+boltons
+cytoolz
+Jinja2
+lmdb
+matplotlib
+numpy
+pandas
+Pillow
+seaborn
+sklearn
+torch
+torchvision
+tqdm

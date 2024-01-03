@@ -203,7 +203,7 @@ Checkpoints for the models we trained ourselves using the architecture from [Wan
 You can re-create our checkpoints using our [Dataset](#dataset) and the instructions from the original repository.
 
 # Dataset
-The dataset used in this work is hosted on [Zenodo](https://doi.org/10.5281/zenodo.7528112).
+The main dataset used in this work is hosted on [Zenodo](https://doi.org/10.5281/zenodo.7528112).
 In total, the dataset contains 50k samples (256x256) for each of the following generators trained on LSUN Bedroom, divided into train, validation, and test set (39k/1k/10k).
 
 | GANs | DMs |
@@ -239,3 +239,7 @@ $ find diffusion_model_deepfakes_lsun_bedroom/train/ -type f -print0 | sort -z |
 $ find diffusion_model_deepfakes_lsun_bedroom/val/ -type f -print0 | sort -z | xargs -0 sha1sum | cut -d " " -f 1 | sha1sum
 c836fe592e49ab630ccc30675694ab32aff8e1a3  -
 ```
+
+## Additional Datasets
+The additional datasets (LSUN Cat, LSUN Horse, LSUN Church, ImageNet, FFHQ, Text2Img) are hosted on [Zenodo](https://zenodo.org/doi/10.5281/zenodo.10454274).
+For each dataset we provide real and generated images from the generators specified in the paper. An exception is Text2Img, for which we cannot provide real images due to copyright.

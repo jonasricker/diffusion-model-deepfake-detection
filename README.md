@@ -1,6 +1,8 @@
-# Towards the Detection of Diffusion Model Deepfakes
+# Towards the Detection of Diffusion Model Deepfakes (VISAPP 2024)
 
-This is the official repository for [Towards the Detection of Diffusion Model Deepfakes](https://arxiv.org/abs/2210.14571).
+This is the official repository for our paper "Towards the Detection of Diffusion Model Deepfakes", accepted at VISAPP 2024.
+
+The extended version of our work with additional experiments and supplemental material is available on [arxiv](https://arxiv.org/abs/2210.14571).
 
 # Table of Contents
 - [Code](#code)

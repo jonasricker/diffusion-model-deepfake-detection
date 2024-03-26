@@ -1,4 +1,4 @@
-# Towards the Detection of Diffusion Model Deepfakes (VISAPP 2024)
+# [VISAPP2024] Towards the Detection of Diffusion Model Deepfakes
 
 This is the official repository for our paper "Towards the Detection of Diffusion Model Deepfakes", accepted at VISAPP 2024.
 

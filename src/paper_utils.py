@@ -102,7 +102,7 @@ def configure_matplotlib(
     import matplotlib as mpl
     import matplotlib.pyplot as plt
     import seaborn as sns
-    from seaborn._oldcore import unique_dashes
+    from seaborn._base import unique_dashes
 
     dashes = unique_dashes(len(sns.color_palette("deep")))
     dashes[0] = "-"

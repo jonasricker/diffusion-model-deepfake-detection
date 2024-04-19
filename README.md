@@ -1,17 +1,8 @@
 # [VISAPP2024] Towards the Detection of Diffusion Model Deepfakes
-
-This is the official repository for our paper "Towards the Detection of Diffusion Model Deepfakes", accepted at VISAPP 2024.
+[Jonas Ricker](https://jonasricker.com), [Simon Damm](https://informatik.rub.de/ml/people/damm/), [Thorsten Holz](https://cispa.de/de/people/c01thho), [Asja Fischer](https://informatik.rub.de/fischer/)  
+International Conference on Computer Vision Theory and Applications (VISAPP), 2024
 
 The extended version of our work with additional experiments and supplemental material is available on [arxiv](https://arxiv.org/abs/2210.14571).
-
-# Table of Contents
-- [Code](#code)
-    - [Detector Evaluation](#detector-evaluation)
-    - [Feature Space Analysis](#feature-space-analysis)
-    - [Spectrum Evolutions](#spectrum-evolutions)
-    - [Fakeness Ratings](#fakeness-ratings)
-- [Checkpoints](#checkpoints)
-- [Dataset](#dataset)
 
 # Code
 We provide the source code and instructions on how to recreate the results in the paper. The code is tested with Python 3.8. To install the required packages run `pip install -r requirements.txt`. You probably should install the [version of PyTorch matching your system](https://pytorch.org/get-started/locally/).

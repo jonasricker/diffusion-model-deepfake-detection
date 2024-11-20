@@ -1,6 +1,6 @@
-# [VISAPP2024] Towards the Detection of Diffusion Model Deepfakes
+# [VISIGRAPP2024] Towards the Detection of Diffusion Model Deepfakes
 [Jonas Ricker](https://jonasricker.com), [Simon Damm](https://informatik.rub.de/ml/people/damm/), [Thorsten Holz](https://cispa.de/de/people/c01thho), [Asja Fischer](https://informatik.rub.de/fischer/)  
-International Conference on Computer Vision Theory and Applications (VISAPP), 2024
+International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications (VISIGRAPP), 2024
 
 The extended version of our work with additional experiments and supplemental material is available on [arxiv](https://arxiv.org/abs/2210.14571).
 
